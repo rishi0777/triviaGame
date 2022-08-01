@@ -45,6 +45,7 @@ const TriviaQuestion = () => {
     setTimeout(() => {
       getQuestionFromApi();
       setFlag(-1);
+      setAnswer("");
     }, 2000);
   };
   return (
