@@ -3,5 +3,5 @@
 ### Live Url
 
 ```
-https://github.com/rishi0777/triviaGame/
+https://rishi0777.github.io/triviaGame/
 ```
