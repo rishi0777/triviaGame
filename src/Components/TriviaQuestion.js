@@ -67,13 +67,17 @@ const TriviaQuestion = () => {
               {flag === 1 && (
                 <>
                   <GiCheckMark style={{ color: "green" }} />
-                  <p>Correct Ans: {correctAnswer}</p>
+                  <p>
+                    <b>Answer Is- {correctAnswer}</b>
+                  </p>
                 </>
               )}
               {flag === 0 && (
                 <>
                   <GiCrossMark style={{ color: "red" }} />
-                  <p>Correct Ans: {correctAnswer}</p>
+                  <p>
+                    <b>Answer Is- {correctAnswer}</b>
+                  </p>
                 </>
               )}
             </div>
