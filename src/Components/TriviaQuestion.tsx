@@ -13,6 +13,7 @@ const TriviaQuestion = () => {
   const [answer, setAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [flag, setFlag] = useState(-1);
+  const [number, setNumber] = useState(0);
 
   useEffect(() => {
     getQuestionFromApi();
@@ -20,6 +21,7 @@ const TriviaQuestion = () => {
 
   //to get new question's data from api
   const getQuestionFromApi = () => {
+    setNumber(number + 1);
     axios(`https://opentdb.com/api.php?amount=1`).then(
       (response) => {
         // console.log(response.data.results[0].correct_answer);
@@ -32,6 +34,7 @@ const TriviaQuestion = () => {
       }
     );
   };
+
   //to validate the answer when the user clicks on submit button
   const validateAnswer = () => {
     if (answer === "") {
@@ -48,15 +51,20 @@ const TriviaQuestion = () => {
       setAnswer("");
     }, 2000);
   };
+
   return (
     <div className="container">
       <div className="TriviaQuestion">
         <h1>TRIVIA</h1>
         <div className="question">
-          <h3>
-            Que.&nbsp;
-            {question.replace(/\&[#?a-z0-9]*\;/g, "")}
-          </h3>
+          {question === "" ? (
+            <h3 style={{ textAlign: "center" }}>Loading...</h3>
+          ) : (
+            <h3>
+              Q{number}.&nbsp;
+              {question.replace(/\&[#?a-z0-9]*\;/g, "")}
+            </h3>
+          )}
           <input
             className="answer"
             type="text"
@@ -82,9 +90,7 @@ const TriviaQuestion = () => {
                 </>
               )}
             </div>
-            <button type="" onClick={validateAnswer}>
-              Submit
-            </button>
+            <button onClick={validateAnswer}>Submit</button>
           </div>
         </div>
       </div>
